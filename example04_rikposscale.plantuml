@@ -1,0 +1,70 @@
+@startmindmap
+* main
+**:<b>guiqtappi.cpp</b>
+<b>ApiGuiScaleIniQt( )</b>
+qmlRegisterType
+ScaleChart
+ScaleDispLayout
+ScaleDispValues
+ScaleCalibrationInfo
+ScaleDispLayout
+FieldStyle
+PanelStyle;
+*** <b>qml
+**** operatorwindow.qml
+*****:Connections -> scaleBuisness contains the business logic
+context->setContextProperty("scaleBuisness",&ScaleBuisness::getObj())<U+003B>
+ScaleDispValues 
+ScaleDispLayout
+ScaleCalibrationInfo;
+*****:DynScalePanel.qml
+(ScaleChart);
+******:scaleDispvalues: scaleBuisness.scaleDispvalues 
+scaleCalibrationInfo: scaleBuisness.scaleCalibrationInfo
+scaleDispLayout: scaleBuisness.secondScaleDispLayoutOperator;
+****** Loader {id: extracali}
+****** Loader{id:loadfields}
+*******:ScalePanelView.qml ( modprops: loadfields.model1 )
+(ListView);
+********:ListView 
+model: modprops.model
+delegate: FieldPanel{};
+******* ScalePanelView.qml ( modprops: loadfields.model2 )
+**** customerwindow.qml
+*** <b>C++ Data
+**** ScaleChart
+***** ScaleDispValues
+******:CAdcWorkerThread::Run()
+CWeightCalcmanager::UpdateWeightCalcMan()
+CCmdInterpreter::StatusUpdate()
+DisplayContent::UpdateGuiContents()
+m_pDoc->ScaleCalcResultGet(weight, currentScaleStatus, tare, szItem, unitprice, price,  szPluText, unit)<U+003B>
+ApiGuiScaleValues::flushValues()
+DisplayValues displayValues<U+003B>
+displayValues.weight = weight.c_str()<U+003B>
+obj.setDisplayScaleValues(displayValues)<U+003B>
+m_scaledispvalues.scaleValuesSet(displayValues)<U+003B>
+fill in ScaleDispValues;
+***** ScaleDispLayout
+****** PanelStyle
+****** FieldStyle
+*******:DisplayLayout m_displaylayout<U+003B>
+Q_PROPERTY(FieldStyle* styleTarefield READ styleTarefield NOTIFY styleTarefieldChanged)<U+003B>
+Q_PROPERTY(FieldStyle* styleweightfield READ styleWeightfield NOTIFY styleWeightfieldChanged)<U+003B>
+Q_PROPERTY(FieldStyle* styleunitpricefield READ styleUnitpricefield NOTIFY styleUnitpricefieldChanged)<U+003B>
+Q_PROPERTY(FieldStyle* stylepricefield READ stylePricefield NOTIFY stylePricefieldChanged)<U+003B>
+Q_PROPERTY(FieldStyle* stylecalibfield READ styleCalibfield NOTIFY styleCalibfieldChanged)<U+003B>
+Q_PROPERTY(FieldStyle* styleplutextfield READ stylePlutextfield NOTIFY stylePlutextfieldChanged)<U+003B>
+Q_PROPERTY(FieldStyle* styledatetimefield READ styleDatetimefield NOTIFY styleDatetimefieldChanged)<U+003B>;
+****** DisplayLayout
+******* PanelStyle
+******* FieldStyle
+********:FieldStyle styletarefield<U+003B>
+FieldStyle styleweightfield<U+003B>
+FieldStyle styleunitpricefield<U+003B>
+FieldStyle stylepricefield<U+003B>
+FieldStyle stylecalibfield<U+003B>
+FieldStyle styleplutextfield<U+003B>
+FieldStyle styledatetimefield<U+003B>;
+***** ScaleCalibrationInfo
+@endmindmap

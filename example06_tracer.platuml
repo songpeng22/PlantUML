@@ -1,0 +1,26 @@
+@startmindmap
+* CHyTrcWriter
+**:
+CHyTrcWriter theTraceWriter
+CHyTrcWriter* g_TrcW = &theTraceWriter
+extern CHyTrcWriter* g_TrcW
+;
+*** InitTracer
+**** CKroemDocument::WriteErrorLogFile
+**** CKroemDocument::WriteLog
+**** #define _MSYMWRITELOG(a,b){if(g_TrcW != NULL)g_TrcW->PutFastSimpleString(a,HYTRC_SIMPLESTR(b),HYTRC_STDARGS);};
+****:
+#define TRCLEVERR CHyTrcWriterFilter::HY_SEV_CRITICAL_ERROR
+#define TRCLEVWARN CHyTrcWriterFilter::HY_SEV_WARNING
+#define TRCLEVINFO CHyTrcWriterFilter::HY_SEV_INFO
+#define TRCLEV0    CHyTrcWriterFilter::HY_SEV_TRACEL0
+#define TRCLEV1    CHyTrcWriterFilter::HY_SEV_TRACEL1
+#define TRCLEV2    CHyTrcWriterFilter::HY_SEV_TRACEL2
+;
+**** trc file format
+*** InitLog4cpp
+**** CKroemDocument::WriteErrorLogFile
+**** CKroemDocument::WriteLog
+**** _MSYMWRITELOG
+**** layout
+@endmindmap

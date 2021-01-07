@@ -1,0 +1,11 @@
+@startuml
+actor 陈平安 order 20
+actor 齐先生 order 10
+actor 赵繇 order 30
+participant Last order 30
+participant Middle order 20
+participant First order 10
+陈平安 <- 齐先生 : 隔代收徒
+齐先生 -> 赵繇 : 师徒
+陈平安 <- 齐先生 : 隔代收徒
+@enduml

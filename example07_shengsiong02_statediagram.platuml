@@ -1,0 +1,50 @@
+@startuml
+scale 1000 width
+scale 1000 height
+hide empty description
+
+Main_Screen -right-> Operation
+state Operation {
+    Press_Button : BdvDirektPluLesen（PLU）
+    Press_Button : BdvMultiplikation（个数）
+    Press_Button : BdvUeberschreiben（价格）
+    Press_Button : BdvHaltbarTage1（有效期）
+    Press_Button : |-有效期通过bLoadData和保留BvData.datum1实现
+    Press_Button : BdvBediener（打印）
+}
+
+Operation -[hidden]down-> Init
+state Init {
+    State_Reset : bSwitch2Count = 0
+    State_Reset : |-BdvSetSwitch2Count
+    State_Reset : |-BdvIsSwitch2Count
+    State_Reset : bSwitching = false
+    State_Reset : |-true: when Pressing PLU key, data can be loaded; 
+    State_Reset : |-false: data can not be loaded;
+    State_Reset : switchStatus = 0
+    State_Reset : |-0: no switch; 1:switch to count; 2:switch to weighting 
+    State_Reset : |-3:switch to other PLU;4:PLU man.
+}
+
+Init -right-> Condition
+state Condition {
+    state State_if_switch{
+        if_check_weight -down-> check_weight
+        
+        if_check_weight:以下两点，在两个点用来判断是否进入switching：
+        if_check_weight:if BdvIsSwitch2Count >> bSwitching = TRUE
+        if_check_weight:if !bSwitching >> BdvCheckPLUSwitch >> BdvIsSwitch2Count >> bSwitching = TRUE
+        
+        check_weight:重量为0，BdvSetSwitch2Count(TRUE)
+        check_weight:重量非0，BdvSetSwitch2Count(FALSE)
+    }
+    State_if_switch -down-> State_switching
+    State_switching : 以下两点，是调用BdvCheckPLUSwitch的时机：
+    State_switching : BdvMultiplikation >> BdvCheckPLUSwitch
+    State_switching : BdvBediener >> BdvCheckPLUSwitch
+    State_switching : 以下用来结束bSwitching：
+    State_switching : BdvAufbereitungPlu >> bSwitching = FALSE
+}
+Condition -down-> [*]
+
+@enduml
