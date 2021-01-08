@@ -19,6 +19,8 @@ state Init {
     State_Reset : |-BdvSetSwitch2Count
     State_Reset : |-BdvIsSwitch2Count
     State_Reset : bSwitching = false
+    State_Reset : |-switching to count
+    State_Reset : bLoadData
     State_Reset : |-true: when Pressing PLU key, data can be loaded; 
     State_Reset : |-false: data can not be loaded;
     State_Reset : switchStatus = 0
@@ -38,12 +40,16 @@ state Condition {
         check_weight:重量为0，BdvSetSwitch2Count(TRUE)
         check_weight:重量非0，BdvSetSwitch2Count(FALSE)
     }
+    
     State_if_switch -down-> State_switching
     State_switching : 以下两点，是调用BdvCheckPLUSwitch的时机：
     State_switching : BdvMultiplikation >> BdvCheckPLUSwitch
     State_switching : BdvBediener >> BdvCheckPLUSwitch
+    State_switching : BdvUeberschreiben >> 也加入了类似BdvCheckPLUSwitch的功能
     State_switching : 以下用来结束bSwitching：
     State_switching : BdvAufbereitungPlu >> bSwitching = FALSE
+    
+    State_switching -down-> State_Switch_2_Count_PLU
 }
 Condition -down-> [*]
 
