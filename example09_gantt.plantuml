@@ -1,0 +1,15 @@
+@startgantt
+[Prototype design] lasts 15 days
+[Test prototype] lasts 10 days
+[Prototype design 2] lasts 13 days
+[Test prototype 2] lasts 4 days
+[Test prototype 2] starts at [Prototype design]'s end
+[Prototype design 2] is colored in Fuchsia/FireBrick
+[Test prototype 2] is colored in GreenYellow/Green
+-- All example --
+[Task 1 (1 day)] lasts 1 day
+[T2 (5 days)] lasts 5 days
+[T3 (1 week)] lasts 1 week
+[T4 (1 week and 4 days)] lasts 1 week and 4 days
+[T5 (2 weeks)] lasts 2 weeks
+@endgantt
