@@ -1,0 +1,35 @@
+@startuml
+hide empty description
+
+Main_Screen -right-> Operation
+
+state Operation {
+    ' relation - PLU_Button and M_PLU_Button
+    PLU_Button -down-> M_PLU_Button
+	' info  - PLU_Button
+    PLU_Button : BdvDirektPluLesen（PLU）
+	PLU_Button : |- BdvDirektPluNr
+	PLU_Button : |-|-BdvAufbereitungPlu
+	PLU_Button : |-|-保存tara
+	' info  - M_PLU_Button
+	M_PLU_Button : BdvAufbereitungPlu
+	M_PLU_Button : -> 如果tara符合条件，报错/切换PLU1
+	
+	 ' info  - PLU_Button_1st_with_fixed_tara
+	PLU_Button_1st_with_fixed_tara : BdvDirektPluLesen
+	
+	 ' relation - FixedTara_Button and M_FixedTara_Button
+	FixedTara_Button -down-> M_FixedTara_Button
+	FixedTara_Button : 保存fixed tara	
+	M_FixedTara_Button : 保存fixed tara		
+	
+	 ' relation - Clear_PLU and M_Clear_PLU
+	 ' info  - Clear_PLU
+	Clear_PLU -down-> M_Clear_PLU
+	Clear_PLU : BdvClear( 2 );
+	 ' info  - M_Clear_PLU
+	M_Clear_PLU : BdvClear( 2 ); -> 清除保存的tara	
+}
+
+
+@enduml
