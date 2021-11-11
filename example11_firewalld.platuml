@@ -1,0 +1,9 @@
+@startmindmap
+* service
+** biz_firstboot
+*** firewalld
+** biz_firstboot
+*** NetworkManager
+**** biz_firstboot_networkmanager
+
+@endmindmap
