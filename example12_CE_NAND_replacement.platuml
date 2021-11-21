@@ -1,0 +1,18 @@
+@startmindmap
+* WINCE600
+** PLATFORM
+*** COMMON/SRC/SOC
+**** "common_fsl_v2/inc" \ncommon_uart.h\ncommon_nandfc.h
+**** "common_fsl_v2/nand/inc" \nNAND_MAX.inc\nNAND_MAX.h\nNANDTYPES.h
+**** "common_fsl_v2/nand/FMDCOMMON/**" \nfmd.cpp -> include NANDTYPES.h\ngenerate -> nand_common_fsl_v2.lib\n->nand_common_fsl_v2_mutex.lib\n->nand_ocq_common_fsl_v2.lib\n->fmdwrapperpdd_common_fsl_v2.lib\n->fmdwrapperpdd_ocq_common_fsl_v2.lib
+**** "common_fsl_v2/boot/fmd/sdmmc" \nsdboot.c -> SDHC device doesn't exist
+**** "mx25_fsl_v2\inc" \nmx25_base_regs.inc  mx25_base_mem.inc\nmx25_nandfc.inc
+*** "COMMON/lib/ARMV4I/retail" \nnand_common_fsl_v2.lib from common_fsl_v2/nand/FMDCOMMON/BIG_SECTOR_INTERLEAVE\nnand_common_fsl_v2_mutex.lib from common_fsl_v2/nand/FMDCOMMON/BIG_SECTOR_INTERLEAVE_MUTEX\nnand_ocq_common_fsl_v2.lib from common_fsl_v2/nand/FMDCOMMON/OCQ_INTERLEAVE\nfmdwrapperpdd_common_fsl_v2.lib\nfmdwrapperpdd_ocq_common_fsl_v2.lib
+*** Bizerba_iMX25
+**** "SRC\COMMON\NANDFMD" \nnandbsp.h -> include NAND_MAX.H\nnot like pdf include K9LAG08U0M.h etc.\n! no change needed here
+**** SRC/BOOTLOADER/
+***** "XLDR/NAND" \nxldr.s \n-> INCLUDE nandchip.inc -> INCLUDE NAND_MAX.inc\n->INCLUDE mx25_nandfc.inc \nxldr_init.s \nnandchip.inc
+***** EBOOT
+
+
+@endmindmap
