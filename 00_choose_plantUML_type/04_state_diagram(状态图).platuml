@@ -1,0 +1,8 @@
+@startuml
+Interface:IOnNewLabelArrivedListener
+Implementation:mListenerList
+Implementation2:mListenerList
+
+Interface -> Implementation
+Interface -> Implementation2
+@enduml
