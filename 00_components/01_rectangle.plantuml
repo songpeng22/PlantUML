@@ -1,0 +1,9 @@
+@startuml
+
+rectangle "Rectangle1" as Rectangle1
+rectangle "Rectangle2" as Rectangle2 #line.dashed
+
+
+Rectangle1 -> Rectangle2
+
+@enduml

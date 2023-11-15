@@ -1,0 +1,28 @@
+@startuml
+' small person
+skinparam actorStyle Hollow 
+' big person
+'skinparam actorStyle awesome 
+
+usecase UC1 as "label arrived
+--
+IOnNewLabelArrivedListener
+..Instance..
+mOnNewLabelArrivedListener\nmListenerList"
+
+usecase HandlerInstance as "communicate
+--
+TcpServer vs PackService
+--
+Interface vs MainActivity
+..Instance..
+Communicate between threads"
+
+usecase AIDLInstance as "AIDL"
+
+
+:AIDL: --> AIDLInstance
+:interface function: --> UC1
+:handler: --> HandlerInstance
+
+@enduml

@@ -1,0 +1,16 @@
+@startuml
+skinparam actorStyle Hollow 
+
+"Main Admin" as Admin
+"Use the application" as (Use)
+usecase UC1 as "You can use
+several lines to define your usecase.
+You can also use separators.
+--
+And you can add titles:
+..Conclusion..
+This allows large description."
+
+:User: --> (Use)
+Admin --> (Admin the application)
+@enduml
