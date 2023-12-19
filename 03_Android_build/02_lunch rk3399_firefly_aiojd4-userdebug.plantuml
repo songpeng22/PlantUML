@@ -1,0 +1,26 @@
+@startuml
+
+participant "lunch rk3399_firefly_aiojd4-userdebug" as 01st
+participant "lunch()" as 02st
+participant "check_variant()" as 03st
+participant "build_build_var_cache()" as 04st
+
+
+participant "build/core/config.mk" as 05st
+participant "build/core/envsetup.mk" as 06st
+participant "build/core/product_config.mk" as 07st
+participant "build/core/product.mk" as 08st
+
+participant "device/rockchip/rk3399/AndroidProducts.mk" as 10st
+
+01st -> 02st : call
+02st -> 03st : call
+02st -> 04st : call
+
+04st -> 05st : call
+05st -> 06st : call
+06st -> 07st : call
+07st -> 08st : call
+08st -> 10st : call
+
+@enduml

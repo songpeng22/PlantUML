@@ -1,0 +1,16 @@
+@startuml
+participant "source /build/envsetup.sh" as 01st
+
+participant "build_build_var_cach()" as 02st
+participant "device/rockchip/rk3399/vendorsetup.sh" as 05st
+
+participant "LUNCH_MENU_CHOICES" as 06st
+
+01st -> 02st : include
+01st -> 05st : call
+
+05st -> 06st : build
+
+
+
+@enduml
